@@ -1,17 +1,32 @@
 // jest.config.js
-module.exports = {
+const nextJest = require('next/jest')
+
+const createJestConfig = nextJest({
+  // Путь к Next.js для загрузки конфигурации next.config.js и .env файлов
+  dir: './',
+})
+
+// Пользовательская конфигурация Jest
+const customJestConfig = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  transform: {
-    '^.+\\.(js|jsx)$': 'babel-jest',
-  },
   moduleNameMapper: {
-    '\\.(css|scss|sass)$': 'identity-obj-proxy',
+    // Алиасы Next.js
+    '^@/(.*)$': '<rootDir>/$1',
+    // CSS modules
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
   },
   testPathIgnorePatterns: [
-    '<rootDir>/node_modules/',
     '<rootDir>/.next/',
-    '<rootDir>/prisma/',
-    '<rootDir>/migrations/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/coverage',
+    '<rootDir>/dist'
   ],
-};
+  collectCoverageFrom: [
+    '**/*.{js,jsx,ts,tsx}',
+    '!**/*.d.ts',
+    '!**/node_modules/**',
+  ],
+}
+
+module.exports = createJestConfig(customJestConfig)
