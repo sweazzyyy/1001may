@@ -98,7 +98,6 @@ const Header = () => {
                 setCookie('token', data.token, { maxAge: 60 * 60 * 24 }); // Пример с хранением на 24 часа
             } else {
                 setNotification({ type: 'error', message: data.error || 'Не удалось войти' });
-                //console.error('Login failed:', data.error);
             }
         } catch (error) {
             setNotification({ type: 'error', message: 'Ошибка сети. Проверьте соединение и попробуйте снова.' });
@@ -201,6 +200,11 @@ const Header = () => {
                         </a>
                     )}
 
+                    {/* 🔹 ССЫЛКА НА ПОМОЩЬ — ДОБАВЛЕНА ЗДЕСЬ */}
+                    <Link href="/help" className={`${styles.iHelpHeader} ${styles.headerNavItem}`}>
+                        <i className="fa fa-question-circle"></i>
+                        <span className={styles.headerNavItemText}>Помощь</span>
+                    </Link>
                 </div>
 
                 {showLoginForm && (

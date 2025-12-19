@@ -170,7 +170,7 @@ export default function AdminPage() {
               <td>{order.order_id}</td>
               <td>{order.customer_name}</td>
               <td>{order.items.length} товаров</td>
-              <td>{order.total_cost} TJS</td>
+              <td>{order.total_cost} ₽</td>
               <td>{new Date(order.created_at).toLocaleString()}</td>
               <td>{order.status}</td>
               <td>

@@ -1,3 +1,8 @@
+/**
+ * Главная страница сайта 1001may.
+ * Отображает приветственное сообщение и ссылку на страницу входа.
+ * @returns {JSX.Element} React-компонент главной страницы.
+ */
 import Link from 'next/link';
 
 export default function Home(){
