@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Простое веб-приложение, созданное на базе Next.js с поддержкой модульного тестирования с помощью Jest и React Testing Library. Идеально подходит как стартовая точка для разработки современных, тестируемых веб-сайтов и приложений. 
 
-## Getting Started
+## 🚀Начало работы
 
-First, run the development server:
-
+Предварительные требования
+Убедитесь, что у вас установлены:
+- [nodejs.org] (версия 18 или новее)
+- Менеджер пакетов: `npm`, `yarn`, `pnpm` или `bun`
+## Установка
+1. Клонируйте репозиторий:
+```bash
+git clone https://github.com/sweazzyyy/1001may.git
+cd 1001may
+```
+2. Установите зависимости:
+```bash
+npm install
+# или
+yarn install
+# или
+pnpm install
+# или
+bun install
+```
+3. Запустите локальный сервер разработки:
 ```bash
 npm run dev
-# or
+# или
 yarn dev
-# or
+# или
 pnpm dev
-# or
+# или
 bun dev
 ```
+4. Откройте в браузере:
+[http://localhost:3000](http://localhost:3000) 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Изменения в файлах будут автоматически отображаться в браузере благодаря горячей перезагрузке (Hot Module Replacement).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🧪 Тестирование с Jest и React Testing Library
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Проект настроен для модульного и интеграционного тестирования компонентов React с использованием:
+- Jest - фреймворк для запуска тестов
+- @testing-library/react — для рендеринга и взаимодействия с компонентами так, как это делает пользователь
 
-## Learn More
+# Установка зависимостей для тестирования 
+```bash
+npm install --save-dev jest @testing-library/react @testing-library/jest-dom @types/jest jest-environment-jsdom
+```
+Также убедитесь, что в `package.json` присутствует скрипт для запуска тестов:
+```bash
+"scripts": {
+  "test": "jest",
+  "test:watch": "jest --watch"
+}
+```
+## Пример теста
+```bash
+// __tests__/page.test.js
+import { render } from '@testing-library/react';
+import Home from '@/app/page';
 
-To learn more about Next.js, take a look at the following resources:
+describe('Home Page', () => {
+  it('renders without crashing', () => {
+    const { container } = render(<Home />);
+    expect(container).toBeInTheDocument();
+  });
+});
+```
+# Запуск тестов
+```bash
+npm test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Структура проекта
+```bash
+1001may/
+├── app/
+│   └── page.js          # Главная страница
+├── __tests__/           # Папка с тестами (опционально)
+├── jest.config.js       # Конфигурация Jest
+├── package.json
+└── ...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📚 Полезные ссылки
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ Next.js Documentation](https://nextjs.org/docs?spm=a2ty_o01.29997173.0.0.29a25171FH5wzj)
+- [Jest Documentation](https://jestjs.io/docs/getting-started?spm=a2ty_o01.29997173.0.0.29a25171FH5wzj)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/?spm=a2ty_o01.29997173.0.0.29a25171FH5wzj)
+- [Learn Next.js](https://nextjs.org/learn)
